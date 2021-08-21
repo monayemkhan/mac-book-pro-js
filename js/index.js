@@ -1,61 +1,70 @@
-//
-function updateProductOption( number, option, price) {
-    const optionInput = document.getElementById(number + option + '-button'); 
-    const productPrice = document.getElementById(option + '-price');
+// update customize product price
+function updateProductPrice( number, product, price) {
+    const optionInput = document.getElementById(number + product + '-button'); 
+    const productPrice = document.getElementById(product + '-price');
     productPrice.innerText = price;
     calculateTotalPrice();
 }
 
- function getPrice (option){
-     const productPrice = document.getElementById(option + '-price');
+// getting input for calculating price
+ function getPrice (product){
+     const productPrice = document.getElementById(product + '-price');
      const priceCollected = parseInt(productPrice.innerText);
      return priceCollected;
  }
 
+// calculate total price
  function calculateTotalPrice() {
     const bestPrice = 1299;
     const memoryPrice = getPrice('memory');
     const storagePrice = getPrice('storage');
     const deliveryPrice = getPrice('delivery');
     const subTotal = bestPrice + memoryPrice + storagePrice + deliveryPrice;
-    // const tax = (subTotal / 100) * 20;
-    // console.log(tax);
-    // const totalPrice = subTotal - tax;
-     //update on the html
+    
+    //update on the html
     document.getElementById('total-price').innerText = subTotal;
-     //document.getElementById('tax-amount').innerText = tax;
-     document.getElementById('promo-price').innerText = totalPrice;
+    document.getElementById('promo-price').innerText = subTotal;
 }
 
+// handle and calculate promo button
+document.getElementById('promo-button').addEventListener('click', function () {
+    const promoInput = document.getElementById('promo-input');
 
-// handle memory option
+    //use promo code and calculate total
+    if(promoInput.value == "stevekaku"){
+        const promoOutput = document.getElementById('promo-price');
+        const promoParcentage = (promoOutput.innerText / 100) * 20;
+        promoOutput.innerText = parseFloat(promoOutput.innerText) - promoParcentage;
+        console.log(promoOutput.innerText);
+    }
+    // input value and disable promo button
+    document.getElementById('promo-button').disabled=true;
+    promoInput.value = "";
+})
+
+// handle memory product
 document.getElementById('first-memory-button').addEventListener('click', function(){
-    updateProductOption('first-', 'memory', 0);
+    updateProductPrice('first-', 'memory', 0);
 });
 document.getElementById('second-memory-button').addEventListener('click', function(){
-    updateProductOption('second-', 'memory', 180);
+    updateProductPrice('second-', 'memory', 180);
 });
 
-//handle storage option
+//handle storage product
 document.getElementById('first-storage-button').addEventListener('click', function(){
-    updateProductOption('first-', 'storage', 0);
+    updateProductPrice('first-', 'storage', 0);
 });
 document.getElementById('second-storage-button').addEventListener('click', function(){
-    updateProductOption('second-', 'storage', 100);
+    updateProductPrice('second-', 'storage', 100);
 });
 document.getElementById('third-storage-button').addEventListener('click', function(){
-    updateProductOption('third-', 'storage', 180);
+    updateProductPrice('third-', 'storage', 180);
 });
 
-//handle delivery option 
+//handle delivery product 
 document.getElementById('first-delivery-button').addEventListener('click', function(){
-    updateProductOption('first-', 'delivery', 0);
+    updateProductPrice('first-', 'delivery', 0);
 });
 document.getElementById('second-delivery-button').addEventListener('click', function(){
-    updateProductOption('second-', 'delivery', 20);
-});
-
-//handle promo code
-document.getElementById('promo-button').addEventListener('click', function(){
-    updateProductOption('promo-', 'button', '');
+    updateProductPrice('second-', 'delivery', 20);
 });

@@ -1,8 +1,13 @@
+/* customize styles */
 *{
     margin: 0;
     padding: 0;
 }
 
+body {
+    margin-top: 3em;
+}
+
 img {
-    width: 100%;    
+    width: 100%;
 }
