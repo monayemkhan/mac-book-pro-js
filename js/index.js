@@ -7,7 +7,7 @@ function updateProductPrice( number, product, price) {
 }
 
 // getting input for calculating price
- function getPrice (product){
+ function getPrice (product) {
      const productPrice = document.getElementById(product + '-price');
      const priceCollected = parseInt(productPrice.innerText);
      return priceCollected;
@@ -31,7 +31,7 @@ document.getElementById('promo-button').addEventListener('click', function () {
     const promoInput = document.getElementById('promo-input');
 
     //use promo code and calculate total
-    if(promoInput.value == "stevekaku"){
+    if(promoInput.value == "stevekaku") {
         const promoOutput = document.getElementById('promo-price');
         const promoParcentage = (promoOutput.innerText / 100) * 20;
         promoOutput.innerText = parseFloat(promoOutput.innerText) - promoParcentage;
@@ -43,28 +43,28 @@ document.getElementById('promo-button').addEventListener('click', function () {
 })
 
 // handle memory product
-document.getElementById('first-memory-button').addEventListener('click', function(){
+document.getElementById('first-memory-button').addEventListener('click', function () {
     updateProductPrice('first-', 'memory', 0);
 });
-document.getElementById('second-memory-button').addEventListener('click', function(){
+document.getElementById('second-memory-button').addEventListener('click', function () {
     updateProductPrice('second-', 'memory', 180);
 });
 
 //handle storage product
-document.getElementById('first-storage-button').addEventListener('click', function(){
+document.getElementById('first-storage-button').addEventListener('click', function () {
     updateProductPrice('first-', 'storage', 0);
 });
-document.getElementById('second-storage-button').addEventListener('click', function(){
+document.getElementById('second-storage-button').addEventListener('click', function () {
     updateProductPrice('second-', 'storage', 100);
 });
-document.getElementById('third-storage-button').addEventListener('click', function(){
+document.getElementById('third-storage-button').addEventListener('click', function () {
     updateProductPrice('third-', 'storage', 180);
 });
 
 //handle delivery product 
-document.getElementById('first-delivery-button').addEventListener('click', function(){
+document.getElementById('first-delivery-button').addEventListener('click', function () {
     updateProductPrice('first-', 'delivery', 0);
 });
-document.getElementById('second-delivery-button').addEventListener('click', function(){
+document.getElementById('second-delivery-button').addEventListener('click', function () {
     updateProductPrice('second-', 'delivery', 20);
 });
