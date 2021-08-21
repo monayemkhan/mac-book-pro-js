@@ -18,9 +18,9 @@ function updateProductOption( number, option, price) {
     const storagePrice = getPrice('storage');
     const deliveryPrice = getPrice('delivery');
     const subTotal = bestPrice + memoryPrice + storagePrice + deliveryPrice;
-    const tax = (subTotal / 100) * 20;
-    console.log(tax);
-    const totalPrice = subTotal - tax;
+    // const tax = (subTotal / 100) * 20;
+    // console.log(tax);
+    // const totalPrice = subTotal - tax;
      //update on the html
     document.getElementById('total-price').innerText = subTotal;
      //document.getElementById('tax-amount').innerText = tax;
